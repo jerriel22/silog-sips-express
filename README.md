@@ -45,6 +45,3 @@ Open the project folder in VS Code and run it with the **Live Server** extension
 | Roland Segunla Jr | | |
 | Ramjun Torremocha | | |
 
-## Video Presentation
-
-(Add the video link or file name here once it's ready.)
