@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Silog & Sips Express</title>
+  <link rel="stylesheet" href="style.css">
+  <script type="module" src="https://pyscript.net/releases/2025.11.2/core.js"></script>
+</head>
+<body>
+  <header>
+    <h1>Silog & Sips Express</h1>
+    <p>Affordable Filipino silog meals for students</p>
+    <nav>
+      <a href="#menu">Menu</a>
+      <a href="#order">Pre-order</a>
+      <a href="#budget">Budget Checker</a>
+      <a href="#feedback">Feedback</a>
+      <a href="#process">How It Works</a>
+    </nav>
+  </header>
+
+  <main>
+    <section id="menu">
+      <h2>Menu</h2>
+      <ul>
+        <li>Tocilog + drink: ₱65</li>
+        <li>Tapsilog + drink: ₱70</li>
+        <li>Hamsilog/Chicksilog + drink: ₱65</li>
+        <li>Bangsilog + drink: ₱75</li>
+      </ul>
+    </section>
+
+    <section id="order">
+      <h2>Pre-order</h2>
+      <input id="customer" placeholder="Your name">
+      <select id="meal">
+        <option>Tocilog</option>
+        <option>Tapsilog</option>
+        <option>Hamsilog/Chicksilog</option>
+        <option>Bangsilog</option>
+      </select>
+      <select id="drink">
+        <option>Sago't Gulaman</option>
+        <option>Samalamig</option>
+      </select>
+      <input id="qty" type="number" min="1" value="1">
+      <button id="add-btn">Add to order</button>
+      <ul id="order-list"></ul>
+      <p id="total">Total: ₱0</p>
+      <button id="submit-btn">Place order</button>
+      <p id="order-message"></p>
+    </section>
+
+    <section id="budget">
+      <h2>Budget Checker</h2>
+      <p>How much is your allowance today?</p>
+      <input id="allowance" type="number" min="0" placeholder="e.g. 150">
+      <p id="budget-result"></p>
+    </section>
+
+    <section id="feedback">
+      <h2>Customer Feedback</h2>
+      <input id="fb-name" placeholder="Your name (optional)">
+      <select id="fb-rating">
+        <option value="5">5 - Excellent</option>
+        <option value="4">4 - Good</option>
+        <option value="3">3 - Okay</option>
+        <option value="2">2 - Poor</option>
+        <option value="1">1 - Bad</option>
+      </select>
+      <textarea id="fb-comment" placeholder="Your comment"></textarea>
+      <button id="fb-submit">Send feedback</button>
+      <p id="fb-message"></p>
+      <p id="fb-average"></p>
+      <ul id="fb-list"></ul>
+    </section>
+
+    <section id="process">
+      <h2>How It Works</h2>
+      <ol>
+        <li>Choose your silog meal and drink, then pre-order on this site.</li>
+        <li>We prepare your order ahead of your break time.</li>
+        <li>Pick it up at our campus booth, with no long queue.</li>
+      </ol>
+    </section>
+  </main>
+
+  <footer><p>Silog & Sips Express - BSIT Event-Driven Programming Final Project</p></footer>
+
+  <script type="py" src="./order.py"></script>
+  <script type="py" src="./budget.py"></script>
+  <script type="py" src="./feedback.py"></script>
+</body>
+</html>
