@@ -1,13 +1,10 @@
 from pyscript import document, when
 
-# Keep these prices in sync with order.py and the menu in index.html
 MENU = {"Tocilog": 65, "Hamsilog/Chicksilog": 65, "Tapsilog": 70, "Bangsilog": 75}
 CHEAPEST = min(MENU.values())
 
-
 @when("input", "#allowance")
 def check_budget(event):
-    """Runs on every keystroke in the allowance box."""
     result = document.querySelector("#budget-result")
     chips = document.querySelector("#budget-list")
     chips.innerHTML = ""
@@ -31,7 +28,6 @@ def check_budget(event):
         f"With ₱{allowance:.0f} you can buy {combos} combo(s) at ₱{CHEAPEST} and keep ₱{change:.0f}."
     )
 
-    # Show every meal this allowance can cover, with the leftover for each
     for meal, price in MENU.items():
         if price <= allowance:
             item = document.createElement("li")
