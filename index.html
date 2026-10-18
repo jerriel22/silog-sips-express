@@ -67,6 +67,16 @@
               <option>Afternoon break (3:00 PM)</option>
             </select>
           </label>
+          <label>Payment
+            <select id="payment">
+              <option value="gcash">GCash (pay first)</option>
+              <option value="booth">Pay at the booth</option>
+            </select>
+          </label>
+          <div id="gcash-box" class="gcash-box">
+            <p>Send your total to <b>GCash 09XX XXX XXXX</b> (Silog & Sips Express), then enter the reference number from your receipt.</p>
+            <label>GCash reference number <input id="gcash-ref" inputmode="numeric" placeholder="10 to 13 digits"></label>
+          </div>
           <p id="price-hint" class="hint"></p>
           <button id="add-btn" class="btn">Add to tray</button>
         </div>
@@ -80,6 +90,7 @@
           <button id="submit-btn" class="btn">Place order</button>
           <button id="clear-btn" class="btn ghost">Clear tray</button>
           <p id="order-message" class="msg" role="status"></p>
+          <p id="order-status" class="status" role="status"></p>
         </div>
       </div>
     </section>
@@ -122,8 +133,9 @@
       <h2>How it works</h2>
       <ol class="steps">
         <li><b>Order ahead.</b> Choose your meal, drink, and pick-up time on this page.</li>
+        <li><b>Pay first.</b> Send the total through GCash and enter your reference number. We start preparing once we confirm your payment.</li>
         <li><b>We prepare it.</b> Your bowl is packed before your break starts.</li>
-        <li><b>Pick it up.</b> Show your name at the campus booth and skip the line.</li>
+        <li><b>Pick it up.</b> Show your name at the campus booth and skip the line. Pay-at-booth orders are cancelled if not picked up within 15 minutes of the pick-up time.</li>
         <li><b>Tell us how it was.</b> Your feedback helps us improve the menu.</li>
       </ol>
     </section>
