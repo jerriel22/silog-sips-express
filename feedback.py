@@ -6,10 +6,15 @@ feedbacks = []
 def render():
     fb_list = document.querySelector("#fb-list")
     fb_list.innerHTML = ""
+
     for fb in feedbacks:
         li = document.createElement("li")
         li.textContent = f"{fb['name']} ({fb['rating']}/5): {fb['comment']}"
         fb_list.appendChild(li)
+
+    if not feedbacks:
+        document.querySelector("#fb-average").textContent = "No reviews yet. Be the first to rate us."
+        return
 
     average = sum(fb["rating"] for fb in feedbacks) / len(feedbacks)
     document.querySelector("#fb-average").textContent = (
@@ -33,3 +38,7 @@ def submit_feedback(event):
     document.querySelector("#fb-comment").value = ""
     document.querySelector("#fb-name").value = ""
     render()
+
+
+# initialize the average text on first load
+render()
