@@ -4,89 +4,134 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Silog & Sips Express</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;800&family=Nunito+Sans:wght@400;700&display=swap">
   <link rel="stylesheet" href="style.css">
   <script type="module" src="https://pyscript.net/releases/2025.11.2/core.js"></script>
 </head>
 <body>
-  <header>
-    <h1>Silog & Sips Express</h1>
-    <p>Affordable Filipino silog meals for students</p>
-    <nav>
-      <a href="#menu">Menu</a>
-      <a href="#order">Pre-order</a>
-      <a href="#budget">Budget Checker</a>
-      <a href="#feedback">Feedback</a>
-      <a href="#process">How It Works</a>
-    </nav>
+  <header class="hero">
+    <div class="hero-text">
+      <h1>Silog & Sips Express</h1>
+      <p>Heavy-portioned Filipino silog and a cold drink, ready before your break starts. Pre-order, skip the queue, pick up at the campus booth.</p>
+      <a class="btn" href="#order">Pre-order now</a>
+    </div>
+    <div class="egg" aria-hidden="true"><i></i></div>
   </header>
+
+  <nav class="topnav">
+    <a href="#menu">Menu</a>
+    <a href="#order">Pre-order</a>
+    <a href="#budget">Budget checker</a>
+    <a href="#feedback">Feedback</a>
+    <a href="#process">How it works</a>
+  </nav>
 
   <main>
     <section id="menu">
-      <h2>Menu</h2>
-      <ul>
-        <li>Tocilog + drink: ₱65</li>
-        <li>Tapsilog + drink: ₱70</li>
-        <li>Hamsilog/Chicksilog + drink: ₱65</li>
-        <li>Bangsilog + drink: ₱75</li>
+      <h2>Today’s menu</h2>
+      <p class="note">Every combo comes with a drink. Order 5 or more combos and save ₱5 on each.</p>
+      <ul class="board">
+        <li><span class="n">Tocilog <small>sweet tocino, egg, garlic rice</small></span><span class="dots"></span><b>₱65</b></li>
+        <li><span class="n">Tapsilog <small>beef tapa, egg, garlic rice</small></span><span class="dots"></span><b>₱70</b></li>
+        <li><span class="n">Hamsilog / Chicksilog <small>ham or chicken, egg, garlic rice</small></span><span class="dots"></span><b>₱65</b></li>
+        <li><span class="n">Bangsilog <small>fried bangus, egg, garlic rice</small></span><span class="dots"></span><b>₱75</b></li>
       </ul>
+      <p class="note">Drinks: Sago’t Gulaman or Samalamig.</p>
     </section>
 
     <section id="order">
       <h2>Pre-order</h2>
-      <input id="customer" placeholder="Your name">
-      <select id="meal">
-        <option>Tocilog</option>
-        <option>Tapsilog</option>
-        <option>Hamsilog/Chicksilog</option>
-        <option>Bangsilog</option>
-      </select>
-      <select id="drink">
-        <option>Sago't Gulaman</option>
-        <option>Samalamig</option>
-      </select>
-      <input id="qty" type="number" min="1" value="1">
-      <button id="add-btn">Add to order</button>
-      <ul id="order-list"></ul>
-      <p id="total">Total: ₱0</p>
-      <button id="submit-btn">Place order</button>
-      <p id="order-message"></p>
+      <div class="split">
+        <div class="form">
+          <label>Your name <input id="customer" placeholder="e.g. Juan D."></label>
+          <label>Meal
+            <select id="meal" class="live">
+              <option>Tocilog</option>
+              <option>Tapsilog</option>
+              <option>Hamsilog/Chicksilog</option>
+              <option>Bangsilog</option>
+            </select>
+          </label>
+          <label>Drink
+            <select id="drink">
+              <option>Sago’t Gulaman</option>
+              <option>Samalamig</option>
+            </select>
+          </label>
+          <label>Quantity <input id="qty" class="live" type="number" min="1" max="20" value="1"></label>
+          <label>Pick-up time
+            <select id="pickup">
+              <option>Morning break (9:30 AM)</option>
+              <option>Lunch break (12:00 PM)</option>
+              <option>Afternoon break (3:00 PM)</option>
+            </select>
+          </label>
+          <p id="price-hint" class="hint"></p>
+          <button id="add-btn" class="btn">Add to tray</button>
+        </div>
+
+        <div class="receipt">
+          <h3>Your tray</h3>
+          <ul id="order-list"></ul>
+          <p class="line"><span>Subtotal</span><span id="subtotal">₱0</span></p>
+          <p class="line"><span>Discount</span><span id="discount">₱0</span></p>
+          <p class="line total"><span>Total</span><span id="total">₱0</span></p>
+          <button id="submit-btn" class="btn">Place order</button>
+          <button id="clear-btn" class="btn ghost">Clear tray</button>
+          <p id="order-message" class="msg" role="status"></p>
+        </div>
+      </div>
     </section>
 
     <section id="budget">
-      <h2>Budget Checker</h2>
-      <p>How much is your allowance today?</p>
-      <input id="allowance" type="number" min="0" placeholder="e.g. 150">
-      <p id="budget-result"></p>
+      <h2>Budget checker</h2>
+      <p class="note">Type your allowance and see what you can eat today.</p>
+      <label>Allowance (₱) <input id="allowance" type="number" min="0" placeholder="e.g. 150"></label>
+      <p id="budget-result" class="msg" role="status"></p>
+      <ul id="budget-list" class="chips"></ul>
     </section>
 
     <section id="feedback">
-      <h2>Customer Feedback</h2>
-      <input id="fb-name" placeholder="Your name (optional)">
-      <select id="fb-rating">
-        <option value="5">5 - Excellent</option>
-        <option value="4">4 - Good</option>
-        <option value="3">3 - Okay</option>
-        <option value="2">2 - Poor</option>
-        <option value="1">1 - Bad</option>
-      </select>
-      <textarea id="fb-comment" placeholder="Your comment"></textarea>
-      <button id="fb-submit">Send feedback</button>
-      <p id="fb-message"></p>
-      <p id="fb-average"></p>
-      <ul id="fb-list"></ul>
+      <h2>Customer feedback</h2>
+      <div class="split">
+        <div class="form">
+          <label>Your name <input id="fb-name" placeholder="Optional"></label>
+          <label>Rating
+            <select id="fb-rating">
+              <option value="5">5 - Sulit na sulit</option>
+              <option value="4">4 - Good</option>
+              <option value="3">3 - Okay</option>
+              <option value="2">2 - Needs work</option>
+              <option value="1">1 - Not good</option>
+            </select>
+          </label>
+          <label>Comment <textarea id="fb-comment" maxlength="120" placeholder="What did you order? How was it?"></textarea></label>
+          <p id="fb-count" class="hint">120 characters left</p>
+          <button id="fb-submit" class="btn">Send feedback</button>
+          <p id="fb-message" class="msg" role="status"></p>
+        </div>
+        <div>
+          <p id="fb-average" class="avg">No reviews yet. Be the first to rate us.</p>
+          <ul id="fb-list" class="reviews"></ul>
+        </div>
+      </div>
     </section>
 
     <section id="process">
-      <h2>How It Works</h2>
-      <ol>
-        <li>Choose your silog meal and drink, then pre-order on this site.</li>
-        <li>We prepare your order ahead of your break time.</li>
-        <li>Pick it up at our campus booth, with no long queue.</li>
+      <h2>How it works</h2>
+      <ol class="steps">
+        <li><b>Order ahead.</b> Choose your meal, drink, and pick-up time on this page.</li>
+        <li><b>We prepare it.</b> Your bowl is packed before your break starts.</li>
+        <li><b>Pick it up.</b> Show your name at the campus booth and skip the line.</li>
+        <li><b>Tell us how it was.</b> Your feedback helps us improve the menu.</li>
       </ol>
     </section>
   </main>
 
-  <footer><p>Silog & Sips Express - BSIT Event-Driven Programming Final Project</p></footer>
+  <footer>
+    <p>Silog & Sips Express · BSIT Event-Driven Programming Final Project</p>
+  </footer>
 
   <script type="py" src="./order.py"></script>
   <script type="py" src="./budget.py"></script>
