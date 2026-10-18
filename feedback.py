@@ -1,7 +1,20 @@
 from pyscript import document, when
+from js import localStorage
+import json
 
-feedbacks = []
+def load_feedbacks():
+    raw = localStorage.getItem("silog_feedbacks")
+    if not raw:
+        return []
+    try:
+        return json.loads(raw)
+    except:
+        return []
 
+feedbacks = load_feedbacks()
+
+def save_feedbacks():
+    localStorage.setItem("silog_feedbacks", json.dumps(feedbacks))
 
 def render():
     fb_list = document.querySelector("#fb-list")
@@ -21,7 +34,6 @@ def render():
         f"Average rating: {average:.1f}/5 from {len(feedbacks)} review(s)"
     )
 
-
 @when("click", "#fb-submit")
 def submit_feedback(event):
     message = document.querySelector("#fb-message")
@@ -34,11 +46,11 @@ def submit_feedback(event):
         return
 
     feedbacks.append({"name": name, "rating": rating, "comment": comment})
+    save_feedbacks()
+
     message.textContent = "Thank you for your feedback!"
     document.querySelector("#fb-comment").value = ""
     document.querySelector("#fb-name").value = ""
     render()
 
-
-# initialize the average text on first load
 render()
