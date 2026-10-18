@@ -1,24 +1,39 @@
+from pyscript import document, when
 
-CHEAPEST_COMBO = 65
+# Keep these prices in sync with order.py and the menu in index.html
+MENU = {"Tocilog": 65, "Hamsilog/Chicksilog": 65, "Tapsilog": 70, "Bangsilog": 75}
+CHEAPEST = min(MENU.values())
 
 
-def check_budget(allowance):
+@when("input", "#allowance")
+def check_budget(event):
+    """Runs on every keystroke in the allowance box."""
+    result = document.querySelector("#budget-result")
+    chips = document.querySelector("#budget-list")
+    chips.innerHTML = ""
+    result.className = "msg"
+
     try:
-        allowance = float(allowance)
+        allowance = float(document.querySelector("#allowance").value)
     except ValueError:
-        return "Please enter a valid amount."
+        result.textContent = ""
+        return
 
-    if allowance < CHEAPEST_COMBO:
-        return (
-            f"₱{allowance:.0f} isn't enough for a combo yet. "
-            f"Our cheapest starts at ₱{CHEAPEST_COMBO}."
-        )
+    if allowance < CHEAPEST:
+        short = CHEAPEST - allowance
+        result.textContent = f"You need ₱{short:.0f} more for our cheapest combo (₱{CHEAPEST})."
+        result.className = "msg error"
+        return
 
-    combos = int(allowance // CHEAPEST_COMBO)
-    change = allowance - combos * CHEAPEST_COMBO
-
-    return (
-        f"With ₱{allowance:.0f}, you can buy {combos} "
-        f"combo(s) at ₱{CHEAPEST_COMBO} each, "
-        f"with ₱{change:.0f} left over."
+    combos = int(allowance // CHEAPEST)
+    change = allowance - combos * CHEAPEST
+    result.textContent = (
+        f"With ₱{allowance:.0f} you can buy {combos} combo(s) at ₱{CHEAPEST} and keep ₱{change:.0f}."
     )
+
+    # Show every meal this allowance can cover, with the leftover for each
+    for meal, price in MENU.items():
+        if price <= allowance:
+            item = document.createElement("li")
+            item.textContent = f"{meal}: ₱{price} (left ₱{allowance - price:.0f})"
+            chips.appendChild(item)
