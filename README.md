@@ -40,7 +40,7 @@ The page updates dynamically: the tray, totals, status, budget results, and feed
 | `order.py` | Pre-order and payment logic |
 | `budget.py` | Budget checker |
 | `feedback.py` | Feedback form |
-| `docs/` | Business process notes and video script |
+| `docs/` | Business process notes |
 
 ## How to Run
 
