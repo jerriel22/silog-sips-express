@@ -2,7 +2,7 @@
 
 Affordable Filipino silog meals and refreshing drinks for students, packaged for quick pick-up. This is an interactive business website built with **PyScript** for our Event-Driven Programming final project at Cebu Eastern College.
 
-**Live site:** (paste the GitHub Pages link here)
+**Live site:** https://jerriel22.github.io/silog-sips-express/
 **Video presentation:** (paste the link here)
 
 ## Business Concept
@@ -50,8 +50,8 @@ Open the project folder in VS Code and run it with the **Live Server** extension
 
 | Member | GitHub Username | Contribution |
 |--------|-----------------|--------------|
-| Jerriel Delos Reyes | | |
-| Jomari Labay | | |
-| Louise Chermaine Marañon | | |
-| Roland Segunla Jr | | |
-| Ramjun Torremocha | | |
+| Jerriel Delos Reyes | [jerriel22](https://github.com/jerriel22) | Created the repository and GitHub Pages site; wrote `index.html` (page structure, payment options, pick-up instructions), the README, and the business process document in `docs/`. |
+| Jomari Labay | [jomarilol3278](https://github.com/jomarilol3278) | Designed the website in `style.css`: color palette, layout, responsive design, and the order tray styling. |
+| Louise Chermaine Marañon | [louise657](https://github.com/louise657) | Wrote `order.py`: pre-order tray, live price hint, discount, GCash payment check, and order status. |
+| Roland Segunla Jr | [lanshimp](https://github.com/lanshimp) | Wrote `budget.py`: the budget checker that reacts as the user types their allowance. |
+| Ramjun Torremocha | [ramjuntorremochaaa-creator](https://github.com/ramjuntorremochaaa-creator) | Wrote `feedback.py`: the feedback form, ratings, average rating, and saving reviews in the browser. |
