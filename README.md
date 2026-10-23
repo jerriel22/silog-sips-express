@@ -3,7 +3,7 @@
 Affordable Filipino silog meals and refreshing drinks for students, packaged for quick pick-up. This is an interactive business website built with **PyScript** for our Event-Driven Programming final project at Cebu Eastern College.
 
 **Live site:** https://jerriel22.github.io/silog-sips-express/
-**Video presentation:** (paste the link here)
+**Video presentation:** https://drive.google.com/file/d/1JVed2IrRIKs4A-DQGHTsI4IKPTTEN3al/view?usp=sharing
 
 ## Business Concept
 
